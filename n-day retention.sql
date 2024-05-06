@@ -12,6 +12,7 @@ with users_cohort as
     on u.user_id = u2.id
     where to_char(u2.date_joined, 'YYYY') = '2022'
 	)
+	-- формируем итоговую таблицу
 select
     cohort,
     round(count(distinct case when diff = 0 then user_id end) * 100.0 / count(distinct case when diff = 0 then user_id end), 2) as "0 (%)",
