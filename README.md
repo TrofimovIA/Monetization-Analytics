@@ -100,7 +100,7 @@
 -- сначала считаем количесвто уникальных пользователей по месяцам и фильтруем
 with cnt_users_month as
 	(select count(distinct user_id) cnt_user_id, 
-			to_char(u.entry_at, 'YYYY-MM') date
+		to_char(u.entry_at, 'YYYY-MM') date
 	from userentry u
 	group by date 
 	having count(distinct u.entry_at::date) > 24)
